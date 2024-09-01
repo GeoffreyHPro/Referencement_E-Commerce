@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link th:href="@{/css/card.css}" rel="stylesheet" />
+  <link th:href="@{/css/modifarticle.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+<h1 id="header-h1">Modification Lot</h1>
+
+<div class="container">
+  <div class="half-page">
+    <div class="card" id="cardmodif">
+      <div class="card-img"><img th:src="${article.getImg()}" alt=""/></div>
+      <div class="card-title" th:text="${article.getName()}"></div>
+      <div class="card-subtitle">Product description. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+    </div>
+  </div>
+  <div class="half-page">
+    <form th:action="@{/adminpanel/stockmanager/lot/} + ${lot.getId()}" class="form" method="post" enctype="multipart/form-data">
+
+      <div class="flex">
+        <label>
+          <input th:value="${lot.getQuantity()}" name="quantity" required="" type="number" class="input">
+          <span> </span>
+        </label>
+      </div>
+
+      <label>
+        <input th:value="${lot.getExpirationDateFormatted()}" name="date" required="" type="date" class="input">
+        <span> </span>
+      </label>
+      <input name="idArticle" th:value="${article.getId()}" type="hidden"  class="input">
+
+      <button class="fancy" href="#">
+        <span class="top-key"></span>
+        <span class="text">Modification lot</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

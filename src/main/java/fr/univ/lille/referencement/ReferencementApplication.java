@@ -1,0 +1,13 @@
+package fr.univ.lille.referencement;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReferencementApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ReferencementApplication.class, args);
+    }
+
+}

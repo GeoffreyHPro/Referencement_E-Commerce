@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link th:href="@{/css/card.css}" rel="stylesheet" />
+  <link th:href="@{/css/modifarticle.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+<h1 id="header-h1">Ajouter au panier</h1>
+
+<div class="container">
+  <div class="half-page">
+    <div class="card" id="cardmodif">
+      <div class="card-img"><div ><img th:src="${article.getImg()}" alt=""></div></div>
+      <div th:text="${article.getName()}" class="card-title">Product title</div>
+      <div class="card-subtitle">Product description. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <hr class="card-divider">
+      <div class="card-footer">
+        <div th:text="${article.getPrice()}"  class="card-price"><span>$</span> </div>
+        <button th:text="@{quantité :} + ${article.getQuantity()}" class="card-btn">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="half-page">
+    <form class="form" method="post" th:action="@{/client/buyArticle/} + ${article.getId()}" >
+
+      <div class="flex">
+        <label>
+          <input  name="quantity" required="" placeholder="0" type="number" class="input" value="0">
+          <span> </span>
+        </label>
+      </div>
+
+      <button class="fancy" href="#">
+        <span class="top-key"></span>
+        <span class="text">Ajouter l'article</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

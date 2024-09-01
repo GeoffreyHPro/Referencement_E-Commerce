@@ -1,0 +1,19 @@
+<!-- error page html -->
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/card.css}" rel="stylesheet" />
+    <link th:href="@{/css/modifarticle.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<html>
+    <head>
+        <title>Error</title>
+    </head>
+    <body>
+        <div th:replace="~{fragments/menu :: menu}"></div>
+        <h1>Error</h1>
+        <p id="error" th:text="${errorMessage}"></p>
+    </body>
+</html>

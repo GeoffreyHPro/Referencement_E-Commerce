@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/search.css}" rel="stylesheet" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/card.css}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Recherche de Produits</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<h1 id="header-h1">Gestion des produits</h1>
+<section class="product-list-section">
+    <h2>Résultats de la Recherche</h2>
+    <div class="pagination">
+    </div>
+</section>
+<table class="product-list">
+    <thead>
+    <tr>
+        <th>Référence</th>
+        <th>Nom du Produit</th>
+        <th>quantité</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="l : ${lines}">
+            <td th:text="${l.getId()}"></td>
+            <td th:text="${l.getArticle().getName()}"></td>
+            <td th:text="${l.getQuantity()}"></td>
+            <!--<form th:action="@{/adminpanel/ordermanager/order/} + ${l.getId()}" method="post">-->
+            <!--<td ><input type="text" name="quantity" th:value="${l.getQuantity()}"></td>-->
+            <form th:action="@{/adminpanel/ordermanager/order/} + ${l.getId()}" method="post">
+            <td ><button type="submit" >Supprimer/Retour</button> </td>
+            <input type="hidden" name="idOrder" th:value="${idOrder}">
+          </form>
+      </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

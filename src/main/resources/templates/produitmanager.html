@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/search.css}" rel="stylesheet" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/card.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Recherche de Produits</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<h1 id="header-h1">Gestion des produits</h1>
+<section class="search-section">
+    <h2>Critères de Recherche</h2>
+    <div th:replace="fragments/research :: search(action='/adminpanel/produitmanager', categories=${categories})"></div>
+</section>
+<section class="product-list-section">
+    <h2>Résultats de la Recherche</h2>
+    <div class="pagination">
+    </div>
+</section>
+<table class="product-list">
+    <thead>
+    <tr>
+        <th>Référence</th>
+        <th>Nom du Produit</th>
+        <th>Prix</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="article : ${allArticles}">
+            <td th:text="${article.getId()}">
+            <td th:text="${article.getName()}">
+            <td th:text="${article.getPrice()}">   
+            <td><form th:action="@{/adminpanel/produitmanager/article/} + ${article.getId()}" method="get"><input type="hidden" name="perishable" th:value="${article.isPerishable()}" /><button type="submit\">Modifier article</button></form></td>
+        </tr>
+    </tbody>
+</table>
+<form action="/adminpanel/produitmanager/addproduit" method="get">
+    <button id="new-product-btn">Nouveau article</button>
+</form>
+<form action="/adminpanel/produitmanager/addproduitp" method="get">
+    <button id="new-product-btn">Nouveau perissable</button>
+</form>
+</section>
+<section class="edit-product-section">
+    <h2>Modifier le Produit</h2>
+    <form id="edit-product-form">
+        <!-- Ajoutez ici les champs pour l'édition du produit -->
+        <button type="submit">Enregistrer</button>
+    </form>
+</section>
+<section class="add-product-section">
+    <h2>Nouveau Produit</h2>
+    <form id="add-product-form">
+    
+    </form>
+</section>
+
+
+</body>
+</html>

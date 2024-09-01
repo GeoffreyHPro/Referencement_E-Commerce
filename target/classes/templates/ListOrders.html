@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/search.css}" rel="stylesheet" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/card.css}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Recherche de Produits</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<h1 id="header-h1">Liste des commandes </h1>
+<section class="search-section">
+    <h2>Critères de Recherche</h2>
+    <form id="search-form">
+        <label for="category">Catégorie :</label>
+        <select id="category" name="category" required>
+            <option value="">Toutes les catégories</option>
+            <!-- Ajoutez ici les options de catégories dynamiquement -->
+        </select>
+        <label for="productName">Nom du Produit :</label>
+        <input type="text" id="productName" name="productName" required>
+        <label for="productReference">Référence du Produit :</label>
+        <input type="text" id="productReference" name="productReference" required>
+        <button type="submit">Rechercher</button>
+        <div class="pagination">
+            <label>
+                <input type="radio" name="pagination" value="10" checked required> 10
+            </label>
+            <label>
+                <input type="radio" name="pagination" value="50" required> 50
+            </label>
+            <label>
+                <input type="radio" name="pagination" value="200" required> 200
+            </label>
+        </div>
+    </form>
+</section>
+<section class="product-list-section">
+    <h2>Résultats de la Recherche</h2>
+    <div class="pagination">
+    </div>
+</section>
+<table class="product-list">
+    <thead>
+    <tr>
+        <th>Référence</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.getId()}">
+            <td th:text="${order.getDeliveryDate()}">
+                <td><form th:action="@{/adminpanel/ordermanager/order/} + ${order.getId()}" method="get"><button type="submit\">Voir commande</button></form></td>
+        </tr>    
+    </tbody>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#header-h1 {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Styles pour la section de recherche */
+.search-section {
+    margin: 20px;
+}
+
+#search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Styles pour la section de liste de produits */
+.product-list-section {
+    margin: 20px;
+}
+
+.product-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-list th,
+.product-list td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Styles pour la section d'édition de produit */
+.edit-product-section,
+.add-product-section {
+    margin: 20px;
+    display: none; /* Masquer par défaut */
+}
+
+.pagination {
+    margin: 25px 0 15px 0;
+}
+.pagination,
+.pagination li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pagination li {
+    background: rgb(204, 204, 204);
+    list-style: none;
+}
+.pagination li a {
+    text-decoration: none;
+    color: #000000;
+    height: 25px;
+    width: 30px;
+    font-size: 14px;
+    padding-top: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.35);
+}
+.pagination li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-top-color: rgba(0, 0, 0, 0.35);
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+}

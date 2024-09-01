@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/search.css}" rel="stylesheet" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/card.css}" rel="stylesheet" />
+    <link th:href="@{/css/listing.css}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Recherche de Produits</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<h1 id="header-h1">Liste des lots pour </h1>
+<section class="product-list-section">
+    <h2>Résultats de la Recherche</h2>
+    <div class="pagination">
+    </div>
+</section>
+<table class="product-list">
+    <thead>
+    <tr>
+        <th>Référence</th>
+        <th>quantité</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="lot : ${allLot}" th:class="'is_perished_' + ${lot.isPerishableInt()}">
+            <td th:text="${lot.getId()}">
+            <td th:text="${lot.getQuantity()}">
+            <td th:text="${lot.getExpirationDateFormatted()}">
+            <td>
+                <form th:action="@{/adminpanel/stockmanager/lot/} + ${lot.getId()}" method="get">
+                    <button type="submit\">Modifier</button>
+                </form>
+                <form th:action="@{/adminpanel/stockmanager/lot/} + ${lot.getId()} + '/delete'" method="post">
+                    <button type="submit\" style="border-color: red">Supprimer</button>
+                </form>
+            </td>
+            </tr>
+    </tbody>
+</table>
+<form th:action="@{/adminpanel/stockmanager/addlot/} + ${idArticle}" method="get">
+    <button id="new-product-btn">Nouveau lot</button>
+</form>
+
+</section>
+<section class="edit-product-section">
+    <h2>Modifier le Produit</h2>
+    <form id="edit-product-form">
+        <!-- Ajoutez ici les champs pour l'édition du produit -->
+        <button type="submit">Enregistrer</button>
+    </form>
+</section>
+<section class="add-product-section">
+    <h2>Nouveau Produit</h2>
+    <form id="add-product-form">
+    
+    </form>
+</section>
+
+
+</body>
+</html>

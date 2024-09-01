@@ -1,0 +1,32 @@
+<div th:fragment="search(action, categories)">
+    <form id="search-form" th:action="${action}" method="get">
+      <label for="category">Catégorie :</label>
+      <select id="category" name="category">
+        <option value="">Toutes les catégories</option>
+        <option th:each="category : ${categories}" th:value="${category}" th:text="${category}"></option>
+      </select>
+      <label for="productName">Nom du Produit :</label>
+      <input type="text" id="productName" name="productName">
+      <label for="productReference">Référence du Produit :</label>
+      <input type="text" id="productReference" name="productReference">
+      <button type="submit">Rechercher</button>
+      <div>
+        <label>
+          <input type="radio" name="pagination" value="10" checked required> 10
+        </label>
+        <label>
+          <input type="radio" name="pagination" value="50" required> 50
+        </label>
+        <label>
+          <input type="radio" name="pagination" value="200" required> 200
+        </label>
+      </div>
+    </form>
+    <div>
+      <ul class="pagination">
+        <li>
+          <a th:each="l: ${list}" th:onclick="|goToPage('${l}')|" th:text="${l}"></a>
+        </li>
+      </ul>
+    </div>
+</div>

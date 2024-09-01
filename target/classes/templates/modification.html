@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link th:href="@{/css/card.css}" rel="stylesheet" />
+  <link th:href="@{/css/modifarticle.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<h1 id="header-h1">Modification d'un article</h1>
+
+<div class="container">
+  <div class="half-page">
+    <div th:replace="fragments/card :: my_fragment(name=${article.getName()}, image=${article.getImg()}, price=${article.getPrice()}, description=${article.getDescription()}, isPurchasable=${true})"></div>
+  </div>
+  <div class="half-page">
+    <form class="form" method="post" th:action="@{/adminpanel/produitmanager/article/} + ${article.getId()}" enctype="multipart/form-data">
+
+      <div class="flex">
+        <label>
+          <input  name="name" required="" th:value="${article.getName()}" type="text" class="input">
+          <span> </span>
+        </label>
+      </div>
+
+      <label>
+        <input th:value="${article.getImg()}" name="file" type="file"  />>
+        <span>image de l'article</span>
+      </label>
+      <div class="flex">
+        <label>
+          <input  name="price" required="" th:value="${article.getPrice()}" type="" class="input">
+          <span> </span>
+        </label>
+      </div>
+
+      <div class="flex">
+        <label>
+          <textarea rows="3" name="description" th:text="${article.getDescription()}" class="input01"></textarea>
+          <span>Description</span>
+        </label>
+      </div>
+
+      <button class="fancy" href="#">
+        <span class="top-key"></span>
+        <span class="text">Ajouter l'article</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

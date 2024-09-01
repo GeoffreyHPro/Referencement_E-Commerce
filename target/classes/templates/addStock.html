@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link th:href="@{/css/card.css}" rel="stylesheet" />
+  <link th:href="@{/css/modifarticle.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}"></div>
+<h1 id="header-h1">Nouveau lot</h1>
+
+<div class="container">
+  <div class="half-page">
+    <div th:replace="fragments/card :: my_fragment(name=${article.getName()}, image=${article.getImg()}, price=${article.getPrice()}, description=${article.getDescription()}, isPurchasable=${true})"></div>
+  </div>
+  <div class="half-page">
+    <form class="form" method="post" enctype="multipart/form-data" >
+      <div class="flex">
+        <label>
+          <input name="quantity" placeholder="quantité" required="" type="number" class="input">
+          <span> </span>
+        </label>
+      </div>
+
+      <label>
+        <input name="date" placeholder="date" required="" type="date" class="input">
+        <span> </span>
+      </label>
+
+      <button class="fancy" href="/">
+        <span class="top-key"></span>
+        <span class="text">Ajouter l'article</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
