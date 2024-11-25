@@ -1,8 +1,5 @@
 # Référencement de produits et stock
-Rémi DEWAME  
-Ayoub Lahouaichri  
-Geoffrey Herman  
-Gaëlle Fret  
+Projet effectué en groupe de 4 durant le cursus universitaire
 
 ## Introduction
 Ce projet a pour but de développer une application visant à simplifier la gestion des produits et des stocks, offrant aux administrateurs et aux employés des outils efficaces 
@@ -12,9 +9,6 @@ Les clients bénéficient également d'une expérience de commande sécurisée, 
 Pour le développement, nous utiliserons du Vue.js pour le front avec la libraire Vuetify, pour ce qui est du back nous utiliserons SpringBoot.
 La compilation sera effectuée à l'aide de Maven. Un fichier pom.xml sera fourni pour faciliter la compilation.
 
-Liens :
-* [Cahier des charges](doc/cahier_des_charges.md)
-* [Diagramme de classe UML](doc/diag-uml.png)
 
 ## Installation
 :warning: L'application nécessite Maven.  
